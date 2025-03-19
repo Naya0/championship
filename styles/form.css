@@ -1,0 +1,45 @@
+form {
+    width: max-content;
+    margin: auto;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="email"],
+input[type="number"],
+select,
+textarea
+{
+    background: var(--inputGrey);
+    width: 300px;
+    height: 40px;
+
+    padding: 5px;
+
+    border: 1px solid white;
+    border-radius: 5px;
+
+    font-size: 1.5em;
+}
+
+.form-item label {
+    font-size: 1.5em;
+    color: var(--mainColorLight);
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input:hover,
+input:focus,
+input:active {
+    outline: none;
+}
+
+form .btn-group {
+    margin: 12px 0;
+}

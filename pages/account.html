@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HackPulse</title>
+    <link rel="stylesheet" href="../styles/variables.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/form.css" />
+    <link rel="stylesheet" href="../styles/account.css" />
+    <link rel="stylesheet" href="../styles/hackathons.css" />
+    <link rel="stylesheet" href="../styles/modal.css" />
+  </head>
+
+  <body>
+    <!-- Создать хакатон / редактировать хакатон-->
+    <div
+      class="modal-form__add-hackathon modal-back df-c"
+      id="modal-form__add-hackathon"
+    >
+      <div class="modal-window df-c-column">
+        <div class="close-container">
+          <svg
+            onclick="toggleForm('modal-form__add-hackathon')"
+            style="enable-background: new 0 0 12 12"
+            version="1.1"
+            viewBox="0 0 512 512"
+            width="20px"
+            fill="white"
+            height="20px"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"
+            />
+          </svg>
+        </div>
+        <h2>Создать хакатон</h2>
+        <form class="df-c-l-column">
+          <div class="form-item">
+            <label for="name">Название хакатона</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Hackathon 11"
+            />
+          </div>
+          <div class="form-item">
+            <label>Сроки регистрации</label>
+            <div>
+              <input
+                type="date"
+                name="registration_date_begin"
+                id="registration_date_begin"
+              />
+              <span>-</span>
+              <input
+                type="date"
+                name="registration_date_end"
+                id="registration_date_end"
+              />
+            </div>
+          </div>
+          <div class="form-item">
+            <label>Сроки проведения</label>
+            <div>
+              <input
+                type="date"
+                name="start_date_begin"
+                id="start_date_begin"
+              />
+              <span>-</span>
+              <input type="date" name="start_date_end" id="start_date_end" />
+            </div>
+          </div>
+          <div class="form-item">
+            <label for="max_members_count"
+              >Максимальное количество участников</label
+            >
+            <input
+              type="number"
+              name="max_members_count"
+              id="max_members_count"
+              placeholder="5"
+            />
+          </div>
+          <div class="form-item">
+            <label for="description">Описание</label>
+            <textarea name="description" id="description">Описание...</textarea>
+          </div>
+          <div class="form-item">
+            <label for="task">Задание хакатона</label>
+            <input
+              type="text"
+              name="task"
+              id="task"
+              placeholder="Задание хакатона"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-outline">Создать хакатон</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Создать команду -->
+    <div
+      class="modal-form__creacte-hackathon modal-back df-c"
+      id="modal-form__creacte-hackathon"
+    >
+      <div class="modal-window df-c-column">
+        <div class="close-container">
+          <svg
+            onclick="toggleForm('modal-form__creacte-hackathon')"
+            style="enable-background: new 0 0 12 12"
+            version="1.1"
+            viewBox="0 0 512 512"
+            width="20px"
+            fill="white"
+            height="20px"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"
+            />
+          </svg>
+        </div>
+        <h2>Присоединиться к хакатону</h2>
+        <form class="df-c-l-column">
+          <div class="form-item">
+            <label for="hackathon">Хакатон</label>
+            <select name="hackathon" id="hackathon">
+              <option value="">Hackathon 2023</option>
+              <option value="">Hackathon 2024</option>
+            </select>
+          </div>
+          <div class="form-item">
+            <label for="team-name">Название команды</label>
+            <input
+              type="text"
+              name="team-name"
+              id="team-name"
+              placeholder="Название команды"
+            />
+          </div>
+          <button type="submit" class="btn btn-outline">Создать команду</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Удалить хакатон -->
+    <div
+      class="modal-form_delete-hackathon modal-back df-c"
+      id="modal-form_delete-hackathon"
+    >
+      <div class="modal-window df-c-column">
+        <div class="close-container">
+          <svg
+            onclick="toggleForm('modal-form_delete-hackathon')"
+            style="enable-background: new 0 0 12 12"
+            version="1.1"
+            viewBox="0 0 512 512"
+            width="20px"
+            fill="white"
+            height="20px"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"
+            />
+          </svg>
+        </div>
+        <h2>Вы действительно хотите удалить хакатон?</h2>
+        <div class="btn-group df-sb-c">
+          <button class="btn btn-outline">Да</button>
+          <button class="btn btn-outline">Нет</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Удалить учатсника команды -->
+    <div
+      class="modal-form_delete-teammate modal-back df-c"
+      id="modal-form_delete-teammate"
+    >
+      <div class="modal-window df-c-column">
+        <div class="close-container">
+          <svg
+            onclick="toggleForm('modal-form_delete-teammate')"
+            style="enable-background: new 0 0 12 12"
+            version="1.1"
+            viewBox="0 0 512 512"
+            width="20px"
+            fill="white"
+            height="20px"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"
+            />
+          </svg>
+        </div>
+        <h2>Вы действительно хотите удалить участника команды?</h2>
+        <div class="btn-group df-sb-c">
+          <button class="btn btn-outline">Да</button>
+          <button class="btn btn-outline">Нет</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Отправить решение -->
+    <div
+      class="modal-form_add-solution modal-back df-c"
+      id="modal-form_add-solution"
+    >
+      <div class="modal-window df-c-column">
+        <div class="close-container">
+          <svg
+            onclick="toggleForm('modal-form_add-solution')"
+            style="enable-background: new 0 0 12 12"
+            version="1.1"
+            viewBox="0 0 512 512"
+            width="20px"
+            fill="white"
+            height="20px"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"
+            />
+          </svg>
+        </div>
+        <h2>Отправить решение</h2>
+        <div class="btn-group df-sb-c">
+          <form >
+            <textarea name="solution" id="solution">...</textarea>
+            <button class="btn btn-outline" type="submit">
+              Отправить решение
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="container header-container">
+        <a href="../index.html" class="df-sb-c logo-link">
+          <img src="../images/logo.png" alt="Логотип" />
+          <span class="text-blue">HackPulse</span>
+        </a>
+        <nav class="df-c">
+          <a href="registration.html">Регистрация</a>
+          <a href="login.html">Авторизация</a>
+          <a href="">О нас</a>
+          <a href="hackathons.html">Хакатоны</a>
+          <a href="">Контакты</a>
+        </nav>
+
+        <div class="switch-theme">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="50"
+            height="50"
+            viewBox="0,0,256,256"
+          >
+            <g
+              fill="#ffffff"
+              fill-rule="nonzero"
+              stroke="none"
+              stroke-width="1"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              stroke-miterlimit="10"
+              stroke-dasharray=""
+              stroke-dashoffset="0"
+              style="mix-blend-mode: normal"
+            >
+              <g transform="scale(5.12,5.12)">
+                <path
+                  d="M24.90625,3.96875c-0.04297,0.00781 -0.08594,0.01953 -0.125,0.03125c-0.46484,0.10547 -0.79297,0.52344 -0.78125,1v6c-0.00391,0.35938 0.18359,0.69531 0.49609,0.87891c0.3125,0.17969 0.69531,0.17969 1.00781,0c0.3125,-0.18359 0.5,-0.51953 0.49609,-0.87891v-6c0.01172,-0.28906 -0.10547,-0.56641 -0.3125,-0.76172c-0.21094,-0.19922 -0.49609,-0.29687 -0.78125,-0.26953zM10.65625,9.84375c-0.375,0.06641 -0.67578,0.33984 -0.78125,0.70313c-0.10547,0.36719 0.00391,0.75781 0.28125,1.01563l4.25,4.25c0.24219,0.29688 0.62891,0.43359 1.00391,0.34766c0.37109,-0.08594 0.66406,-0.37891 0.75,-0.75c0.08594,-0.375 -0.05078,-0.76172 -0.34766,-1.00391l-4.25,-4.25c-0.20703,-0.22266 -0.50781,-0.33594 -0.8125,-0.3125c-0.03125,0 -0.0625,0 -0.09375,0zM39.03125,9.84375c-0.22656,0.03125 -0.4375,0.14453 -0.59375,0.3125l-4.25,4.25c-0.29687,0.24219 -0.43359,0.62891 -0.34766,1.00391c0.08594,0.37109 0.37891,0.66406 0.75,0.75c0.375,0.08594 0.76172,-0.05078 1.00391,-0.34766l4.25,-4.25c0.3125,-0.29687 0.40234,-0.76172 0.21875,-1.15234c-0.1875,-0.39453 -0.60156,-0.62109 -1.03125,-0.56641zM24.90625,15c-0.03125,0.00781 -0.0625,0.01953 -0.09375,0.03125c-0.0625,0.00391 -0.125,0.01563 -0.1875,0.03125c-0.01172,0.01172 -0.01953,0.01953 -0.03125,0.03125c-5.30469,0.22656 -9.59375,4.54688 -9.59375,9.90625c0,5.50391 4.49609,10 10,10c5.50391,0 10,-4.49609 10,-10c0,-5.33984 -4.25391,-9.64453 -9.53125,-9.90625c-0.03516,0 -0.05859,-0.03125 -0.09375,-0.03125c-0.10156,-0.03906 -0.20703,-0.05859 -0.3125,-0.0625c-0.01953,0 -0.04297,0 -0.0625,0c-0.03125,0 -0.0625,0 -0.09375,0zM24.9375,17c0.01953,0 0.04297,0 0.0625,0c0.03125,0 0.0625,0 0.09375,0c4.375,0.05078 7.90625,3.61328 7.90625,8c0,4.42188 -3.57812,8 -8,8c-4.41797,0 -8,-3.57812 -8,-8c0,-4.39844 3.54688,-7.96484 7.9375,-8zM4.71875,24c-0.55078,0.07813 -0.9375,0.58984 -0.85937,1.14063c0.07813,0.55078 0.58984,0.9375 1.14063,0.85938h6c0.35938,0.00391 0.69531,-0.18359 0.87891,-0.49609c0.17969,-0.3125 0.17969,-0.69531 0,-1.00781c-0.18359,-0.3125 -0.51953,-0.5 -0.87891,-0.49609h-6c-0.03125,0 -0.0625,0 -0.09375,0c-0.03125,0 -0.0625,0 -0.09375,0c-0.03125,0 -0.0625,0 -0.09375,0zM38.71875,24c-0.55078,0.07813 -0.9375,0.58984 -0.85937,1.14063c0.07813,0.55078 0.58984,0.9375 1.14063,0.85938h6c0.35938,0.00391 0.69531,-0.18359 0.87891,-0.49609c0.17969,-0.3125 0.17969,-0.69531 0,-1.00781c-0.18359,-0.3125 -0.51953,-0.5 -0.87891,-0.49609h-6c-0.03125,0 -0.0625,0 -0.09375,0c-0.03125,0 -0.0625,0 -0.09375,0c-0.03125,0 -0.0625,0 -0.09375,0zM15,33.875c-0.22656,0.03125 -0.4375,0.14453 -0.59375,0.3125l-4.25,4.25c-0.29687,0.24219 -0.43359,0.62891 -0.34766,1.00391c0.08594,0.37109 0.37891,0.66406 0.75,0.75c0.375,0.08594 0.76172,-0.05078 1.00391,-0.34766l4.25,-4.25c0.29688,-0.28516 0.38672,-0.72656 0.22656,-1.10547c-0.15625,-0.37891 -0.53516,-0.62109 -0.94531,-0.61328c-0.03125,0 -0.0625,0 -0.09375,0zM34.6875,33.875c-0.375,0.06641 -0.67578,0.33984 -0.78125,0.70313c-0.10547,0.36719 0.00391,0.75781 0.28125,1.01563l4.25,4.25c0.24219,0.29688 0.62891,0.43359 1.00391,0.34766c0.37109,-0.08594 0.66406,-0.37891 0.75,-0.75c0.08594,-0.375 -0.05078,-0.76172 -0.34766,-1.00391l-4.25,-4.25c-0.1875,-0.19922 -0.44531,-0.30859 -0.71875,-0.3125c-0.03125,0 -0.0625,0 -0.09375,0c-0.03125,0 -0.0625,0 -0.09375,0zM24.90625,37.96875c-0.04297,0.00781 -0.08594,0.01953 -0.125,0.03125c-0.46484,0.10547 -0.79297,0.52344 -0.78125,1v6c-0.00391,0.35938 0.18359,0.69531 0.49609,0.87891c0.3125,0.17969 0.69531,0.17969 1.00781,0c0.3125,-0.18359 0.5,-0.51953 0.49609,-0.87891v-6c0.01172,-0.28906 -0.10547,-0.56641 -0.3125,-0.76172c-0.21094,-0.19922 -0.49609,-0.29687 -0.78125,-0.26953z"
+                ></path>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </header>
+    <main class="">
+      <div class="container">
+        <h1>Личный кабинет</h1>
+        <div class="account">
+          <div class="sidebar df-c-l-column">
+            <input type="radio" id="organizer" name="sidebar_link" checked />
+            <label for="organizer"> Для организатора </label>
+            <input type="radio" id="participant" name="sidebar_link" />
+            <label for="participant">Для участника</label>
+          </div>
+          <div class="account-content">
+            <section class="organizer activeTab">
+              <h2>Для организатора</h2>
+
+              <div class="add_hackathon df-c-l-column">
+                <p class="title">Добавить хакатон</p>
+                <p class="description">
+                  Если вы хотите создать хакатон, нажмите кнопку ниже и
+                  заполните форму
+                </p>
+                <button
+                  class="btn btn-outline"
+                  onclick="toggleForm('modal-form__add-hackathon')"
+                >
+                  Добавить
+                </button>
+              </div>
+
+              <div class="hackathons">
+                <h2>Мои хакатоны</h2>
+                <div class="hackathons-list">
+                  <div class="hackathon df-c-l-column">
+                    <p class="title">Hackathon 2023</p>
+                    <p class="dates">01.10.2025 - 03.10.2025</p>
+                    <div>
+                      <p class="t-b">Регистрация на хакатон:</p>
+                      <p>25.09.2025 - 30.09.2025</p>
+                    </div>
+                    <p>
+                      <span class="t-b"
+                        >Максимальное количество участников в команде:</span
+                      >
+                      5
+                    </p>
+                    <p>Описание хакатона</p>
+                    <div>
+                      <p class="t-b">Задание хакатона:</p>
+                      <p>Задание хакатона</p>
+                    </div>
+                    <div class="btn-group df-sb-c">
+                      <a href="hackathon.html" class="btn btn-outline m-a df-c"
+                        ><span>Подробнее</span></a
+                      >
+                      <button
+                        class="btn btn-outline"
+                        onclick="toggleForm('modal-form__add-hackathon')"
+                      >
+                        Редактировать
+                      </button>
+                    </div>
+                    <button
+                      class="btn-delete"
+                      onclick="toggleForm('modal-form_delete-hackathon')"
+                    >
+                      Удалить
+                    </button>
+                  </div>
+                  <div class="hackathon df-c-l-column">
+                    <p class="title">Hackathon 2023</p>
+                    <p class="dates">01.10.2025 - 03.10.2025</p>
+                    <div>
+                      <p class="t-b">Регистрация на хакатон:</p>
+                      <p>25.09.2025 - 30.09.2025</p>
+                    </div>
+                    <p>
+                      <span class="t-b"
+                        >Максимальное количество участников в команде:</span
+                      >
+                      5
+                    </p>
+                    <p>Описание хакатона</p>
+                    <div>
+                      <p class="t-b">Задание хакатона:</p>
+                      <p>Задание хакатона</p>
+                    </div>
+                    <div class="btn-group df-sb-c">
+                      <a href="hackathon.html" class="btn btn-outline m-a df-c"
+                        ><span>Подробнее</span></a
+                      >
+                      <button
+                        class="btn btn-outline"
+                        onclick="toggleForm('modal-form__add-hackathon')"
+                      >
+                        Редактировать
+                      </button>
+                    </div>
+                    <button
+                      class="btn-delete"
+                      onclick="toggleForm('modal-form_delete-hackathon')"
+                    >
+                      Удалить
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="participant">
+              <h2>Для участника</h2>
+              <div class="section-add df-sb-c">
+                <div class="request df-c-l-column">
+                  <p class="title">Заявка на хакатон</p>
+                  <p class="description">
+                    Если вы хотите подать заявку на хакатон, нажмите кнопку ниже
+                    и заполните форму
+                  </p>
+                  <button
+                    class="btn btn-outline"
+                    onclick="toggleForm('modal-form__creacte-hackathon')"
+                  >
+                    Присоединиться
+                  </button>
+                </div>
+                <div class="join-team df-c-l-column">
+                  <div class="form-item">
+                    <label for="login">Введите код приглашения</label>
+                    <input
+                      type="text"
+                      name="login"
+                      id="login"
+                      placeholder="123456"
+                    />
+                  </div>
+                  <button class="btn btn-outline">Присоединиться</button>
+                </div>
+              </div>
+
+              <div class="commands">
+                <h2>Мои команды</h2>
+                <div class="commands-list">
+                  <div class="hackathon df-c-l-column">
+                    <p class="title">
+                      <a href="hackathon.html">Хакатон VKRuM</a>
+                    </p>
+
+                    <p><span class="t-b">Команда:</span> Орлы</p>
+                    <div class="team-list">
+                      <p>Участники:</p>
+                      <ul>
+                        <li>Антон</li>
+                        <li>Витя78</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="hackathon df-c-l-column">
+                    <p class="title">
+                      <a href="hackathon.html">Хакатон VKRuM</a>
+                    </p>
+                    <p><span class="t-b">Команда:</span> Орлы</p>
+                    <p><span class="t-b">Код приглашения:</span> 11345678</p>
+                    <div class="team-list">
+                      <p>Участники:</p>
+                      <ul>
+                        <li>
+                          Антон
+                          <a
+                            href="#"
+                            class="text-red"
+                            onclick="toggleForm('modal-form_delete-teammate')"
+                            >Удалить</a
+                          >
+                        </li>
+                        <li>
+                          Витя78
+                          <a
+                            href="#"
+                            class="text-red"
+                            onclick="toggleForm('modal-form_delete-teammate')"
+                            >Удалить</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <button
+                      class="btn btn-outline"
+                      onclick="toggleForm('modal-form_add-solution')"
+                    >
+                      Прикрепить ответ
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div>
+          <a href="/" class="df-sb-c logo-link">
+            <img src="../images/logo.png" alt="Логотип" />
+            <span class="text-blue">HackPulse</span>
+          </a>
+          <p>© Абакан, 2025</p>
+        </div>
+        <div class="df-start nav">
+          <a href="">Регистрация</a>
+          <a href="">Авторизация</a>
+          <a href="">Личный кабинет</a>
+          <a href="">О нас</a>
+          <a href="">Хакатоны</a>
+          <a href="">Контакты</a>
+        </div>
+        <div class="footer-contacts">
+          <p>Контактная информация:</p>
+          <a href="tel:+74842234567">+7 (4842) 23-45-67</a>
+          <a href="mailto:hackpulse@hack.ru">hackpulse@hack.ru</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../scripts/accountTabs.js"></script>
+    <script src="../scripts/modal.js"></script>
+  </body>
+</html>

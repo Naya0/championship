@@ -1,0 +1,50 @@
+.modal-back {
+    display: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(255, 255, 255, 0.51);
+    z-index: 100;
+}
+
+.modal-window {
+    position: relative;
+
+    width: 500px;
+    /* height: 360px; */
+    padding: 30px;
+
+    background: black;
+}
+
+.close-container {
+    width: 100%;
+    text-align: end;
+}
+
+.close-container svg {
+    transition: .25s;
+}
+
+.close-container svg:hover {
+    fill: blue;
+    cursor: pointer;
+}
+
+.modal-window h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.active-modal-form {
+    display: flex;
+}
+
+.modal-back input[type='date'] {
+    width: 45%;
+}

@@ -1,0 +1,89 @@
+.account {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 400px);
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.account .sidebar {
+    border-right: 1px solid var(--mainBlue);
+    justify-content: flex-start;
+    gap: 0;
+}
+
+.account .sidebar input[type="radio"] {
+    display: none;
+}
+
+.account .sidebar input[type="radio"]::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+}
+
+.account .sidebar label {
+    position: relative;
+
+    width: 100%;
+    height: 40px;
+    font-size: 1.5em;
+    background: #222;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+
+    transition: .25s;
+}
+
+
+.account .sidebar label:hover {
+    cursor: pointer;
+    background: #0034ff;
+    color: var(--mainColorLight);
+}
+
+.account .sidebar input[type="radio"]:checked+label {
+    background: #0034ff;
+    color: var(--mainColorLight);
+}
+
+.account-content {
+    padding: 0 20px;
+}
+
+
+/* ---------------- */
+
+.account-content section {
+    display: none;
+}
+
+.team-list {
+    position: relative;
+
+    padding-left: 20px;
+}
+
+#organizer:checked {
+    background: red;
+}
+
+.activeTab {
+    display: block !important;
+}
+
+/* */
+.commands-list {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+}
+
+.commands-list .hackathon {
+    justify-content: flex-start;
+}

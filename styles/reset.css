@@ -1,0 +1,164 @@
+@font-face {
+    font-family: Inter;
+    src: url('../fonts/Inter-VariableFont_opsz\,wght.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: var(--mainColorLight);
+    font-family: Inter;
+
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: black;
+}
+
+h1 {
+    font-size: 3.5em;
+    margin: 12px 0;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin: 16px 0;
+}
+
+
+h3 {
+    font-size: 2em;
+}
+
+p,
+a,
+button,
+span,
+li {
+    font-size: 1.5em;
+}
+
+h2 span {
+    font-size: inherit;
+}
+
+p {
+    line-height: 20px;
+}
+
+a {
+    text-decoration: none;
+    transition: .25s;
+}
+
+a:hover {
+    color: var(--mainBlue);
+}
+
+main {
+    min-height: calc(100vh - 260px);
+}
+
+
+/*-----------------------*/
+.container {
+    width: 80%;
+    max-width: 1200px;
+    min-width: 900px;
+    margin: auto;
+}
+
+.m-a {
+    margin: 0 auto;
+}
+
+.df-sb-c {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.df-c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.df-start {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 12px;
+}
+
+.df-c-l-column {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.df-c-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.t-b {
+    font-weight: bold;
+}
+
+.text-blue {
+    color: var(--mainBlue);
+}
+
+.text-red {
+    color: red;
+}
+
+.text-pink {
+    color: var(--pink);
+}
+
+.btn {
+    height: 40px;
+    width: 180px;
+    border-radius: 5px;
+
+    transition: .25s;
+}
+
+.btn-fill {
+    background-color: var(--mainBlue);
+    color: var(--mainColorLight);
+    border: none;
+}
+
+.btn-fill:hover {
+    cursor: pointer;
+    border: 1px solid var(--mainBlue);
+    background: transparent;
+}
+
+.btn-outline {
+
+    border: 1px solid var(--mainBlue);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    cursor: pointer;
+    border: none;
+    background-color: var(--mainBlue);
+    color: var(--mainColorLight);
+}

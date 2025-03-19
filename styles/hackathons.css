@@ -1,0 +1,80 @@
+.hackathon {
+    background: var(--grayBack);
+    border: 1px solid #525252;
+    border-radius: 5px;
+
+    justify-content: space-between;
+    gap: 26px;
+
+    max-width: 300px;
+
+    padding: 25px 12px;
+}
+
+.hackathons-list {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+}
+
+.hackathon .title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hackathon .dates {
+    font-size: 1.7em;
+    color: var(--mainBlue);
+    font-weight: bold;
+    text-align: center;
+}
+
+.hackathon p {
+    width: 100%;
+}
+
+.hackathon span,
+.hackathon a {
+    font-size: inherit;
+}
+
+.btn-group {
+    width: 100%;
+}
+
+/* ---- */
+
+.hackathon-page {
+    position: relative;
+}
+
+.hackathon-page .dates {
+    font-size: 2em;
+}
+
+.btn-delete {
+    height: 40px;
+    width: 100%;
+
+    font-size: 1.5em;
+    border-radius: 5px;
+    transition: .25s;
+
+    border: 1px solid red;
+    background: transparent;
+}
+
+.btn-delete:hover {
+    cursor: pointer;
+    background: rgb(145, 3, 3);
+    color: white;
+}
+
+p span {
+    font-size: inherit;
+}
+
+a.btn {
+    font-size: 1.5em;
+}
