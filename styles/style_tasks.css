@@ -1,0 +1,428 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+main {
+    background-color: white;
+}
+
+main * {
+    color: black;
+}
+
+/* task 1*/
+
+.task-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.task-1_container {
+    display: flex;
+    gap: 20px;
+}
+
+.task-1_container img {
+    width: 150px;
+    height: 150px;
+}
+
+.task-1_container img:last-child {
+    filter: grayscale(80%) blur(3px);
+}
+
+/* task 3*/
+
+.task-3 {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: auto;
+}
+
+.task-3 .cube {
+    margin-top: 100px;
+    margin-left: 150px;
+    width: 200px;
+    position: relative;
+
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(20deg);
+
+    animation: rotate_cube 8s infinite linear;
+}
+/* task 3*/
+
+.task-3 {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: auto;
+}
+
+.task-3 .cube {
+    margin-top: 100px;
+    margin-left: 150px;
+    width: 200px;
+    position: relative;
+
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(20deg);
+
+    animation: rotate_cube 8s infinite linear;
+}
+
+/* грани куба */
+.task-3 .cube>div {
+    position: absolute;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+
+    width: 200px;
+    height: 200px;
+
+    background: rgba(0, 0, 0, 0.849);
+    border: 1px solid rgb(58, 58, 58);
+
+}
+
+.task-3 .cube * {
+    color: white !important;
+}
+
+.cube .front {
+    transform: translateZ(100px);
+}
+
+.cube .back {
+    transform: rotateY(180deg) translateZ(100px);
+}
+
+.cube .right {
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+.cube .left {
+    transform: rotateY(-90deg) translateZ(100px);
+}
+
+.cube .top {
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+.cube .bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+}
+
+
+@keyframes rotate_cube {
+    0% {
+        transform: rotateX(-20deg) rotateY(20deg);
+    }
+
+    100% {
+        transform: rotateX(-20deg) rotateY(360deg);
+    }
+}
+/*piramida*/
+
+.piramida {
+    width: 400px;
+    height: 400px;
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    animation: rotate_piramida 30s infinite linear;
+  }
+
+  .piramida .tr {
+    position: absolute;
+
+    left: 140px;
+    top: 150px;
+
+    width: 0;
+    height: 0;
+
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 120px solid rgba(0, 0, 255, 0.528);
+
+    transform-origin: 50% 0%;
+  }
+
+  .piramida .bottom {
+    position: absolute;
+
+    left: 140px;
+    top: 150px;
+    border-bottom: 120px solid rgba(0, 0, 255, 0.528);
+
+    transform: rotateX(-90deg) translateZ(60px) translateY(-60px);
+
+    width: 120px;
+    height: 120px;
+  }
+
+  .piramida .first {
+    transform: rotateY(90deg) rotateX(150deg) rotateZ(180deg)
+      translateX(60px) translateY(14px) translateZ(-8px);
+  }
+
+  .piramida .second {
+    transform: rotateY(-90deg) rotateX(150deg) rotateZ(180deg)
+      translateX(-60px) translateY(14px) translateZ(-8px);
+  }
+
+  .piramida .third {
+    transform: rotateY(0deg) rotateX(150deg) rotateZ(180deg) translateX(0px)
+      translateY(-14px) translateZ(-60px);
+  }
+
+  .piramida .four {
+    transform: rotateY(180deg) rotateX(150deg) rotateZ(180deg)
+      translateX(0px) translateY(45px) translateZ(45px);
+  }
+
+ 
+
+  @keyframes rotate_piramida {
+    0% {
+      transform: rotateX(-20deg) rotateY(20deg);
+    }
+
+    100% {
+      transform: rotateX(-20deg) rotateY(360deg);
+    }
+  }
+
+/* task 4*/
+
+.task-4 {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+
+.task-4 .sprite {
+    content: "";
+
+    position: absolute;
+    background: url('https://krita-artists.org/uploads/default/original/3X/b/2/b242f551a6e70ca619a2059f17cb3236e8569cd1.jpeg');
+    width: 130px;
+    /*размер одного кадра спрайта*/
+    height: 130px;
+
+    background-position: 150px 0;
+
+    animation: sprite_run .5s infinite reverse steps(5, end);
+
+    /* тоже самое, что и выше, но построчно */
+
+    /* animation-name: sprite_run;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse; /*т.к. картинка обратная*/
+    /* animation-timing-function: steps(5, end); */
+}
+
+.sprite-container {
+    position: absolute;
+    left: 0;
+    transition: .5s;
+    animation: sprite_slide 8s infinite normal steps(100, end);
+
+}
+
+@keyframes sprite_run {
+    100% {
+        background-position: 750px 0;
+    }
+}
+
+
+@keyframes sprite_slide {
+    100% {
+        left: calc(100% + 130px);
+    }
+}
+
+/*task-6 */
+
+.task-6 {
+    min-height: 170px;
+}
+
+.switch-container {
+    position: relative;
+    display: block;
+    height: 150px;
+}
+
+#switch {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    content: '';
+    width: 120px;
+    height: 40px;
+
+    cursor: pointer;
+}
+
+.slider::before {
+    position: absolute;
+    content: '';
+    background-color: #020864;
+    inset: 0;
+
+    border-radius: 20px;
+    transition: .25s;
+}
+
+.slider::after {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    top: calc(50% - 10px);
+    left: 10px;
+
+    background-color: #00c3ff;
+
+    transition: .25s;
+}
+
+#switch:checked~.slider::after {
+    background-color: #020864;
+    left: calc(100% - 30px);
+}
+
+#switch:checked~.slider::before {
+    background-color: #00c3ff;
+}
+
+/* task 7 */
+
+.task-7 .container {
+    width: 300px;
+
+    display: grid;
+    grid-template: repeat(4, 1fr)/ 1fr 2fr;
+    gap: 10px;
+
+    background-color: rgb(245, 89, 97);
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px;
+}
+
+
+.task-7 .container #rgb-code {
+    grid-column: 2 span;
+}
+
+/* task 8 */
+ 
+.keyboard {
+    display: grid;
+    grid-template-rows: repeat(3, 30px);
+    grid-template-columns: repeat(10, 30px);
+}
+
+.key {
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.key:hover {
+    color: red;
+}
+
+.key:nth-child(19) {
+    grid-column: 2 span;
+}
+
+.key:last-child {
+    grid-column: 8 / span 2;
+    width: 60px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+/*task -10 */
+.task-10 .clock {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-10 .clock .arrow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-content {
+    position: relative;
+    width: 1px;
+    transform: rotateZ(0deg);
+}
+
+.arrow-hour .arrow-content {
+    height: 30%;
+    background-color: rgb(104, 16, 0);
+    top: -15%;
+}
+
+
+.arrow-min .arrow-content {
+    height: 40%;
+    background-color: rgb(0, 24, 104);
+    top: -20%;
+}
+
+.arrow-sec .arrow-content {
+    height: 50%;
+    background-color: black;
+    top: -25%;
+}
+
+
+/* task 11 */
+
+canvas {
+    border: 1px solid black;
+}
